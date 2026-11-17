@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>html{padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Vanakkam DSA Workshop Model</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one 680px column on graphite. Brand = Hayan Tech cube: glossy black faces + champagne edge lines.
+   Champagne is used as linework, numbers and the primary action; everything else stays graphite. */
+:root{
+  --bg:#141417; --surface:#1c1c20; --raised:#232328; --ink:#f4f1ec; --muted:#a3a0a8; --line:#2d2c32;
+  --champ:#e3c39d; --champ-2:#c99a7c; --champ-soft:rgb(227 195 157 / .10); --champ-line:rgb(227 195 157 / .28);
+  --on-champ:#17140f;
+  --good:#8fd6ae; --bad:#f0a29a;
+  --ph:#3b3216; --ph-ink:#f3dc93;
+  --display:"Sora","Segoe UI",system-ui,sans-serif;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;padding-bottom:88px}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.col{max-width:680px;margin:0 auto}
+h1,h2,h3{margin:0;font-family:var(--display);text-wrap:balance}
+h1{font-size:clamp(2.1rem,8vw,3.05rem);font-weight:700;letter-spacing:-.03em;line-height:1.08}
+h2{font-size:clamp(1.4rem,5vw,1.8rem);font-weight:600;letter-spacing:-.02em;line-height:1.2}
+h3{font-size:1rem;font-weight:600;line-height:1.35}
+p{margin:0}
+.muted{color:var(--muted)}
+.gold{background:linear-gradient(100deg,var(--champ),var(--champ-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.label{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--champ);display:flex;align-items:center;gap:10px}
+.label::before{content:"";width:18px;height:1px;background:var(--champ)}
+.ph{background:var(--ph);color:var(--ph-ink);border-radius:3px;padding:0 .3em;font-weight:500;-webkit-text-fill-color:currentColor}
+.btn{display:block;text-align:center;background:linear-gradient(100deg,var(--champ),var(--champ-2));color:var(--on-champ);
+  font-family:var(--display);font-weight:700;font-size:1rem;text-decoration:none;border-radius:10px;padding:15px 20px;border:0;cursor:pointer;
+  box-shadow:0 10px 30px rgb(227 195 157 / .16),inset 0 1px 0 rgb(255 255 255 / .35)}
+.btn small{display:block;font-family:var(--sans);font-weight:500;font-size:.8rem;opacity:.75}
+.btn:focus-visible,.unmute:focus-visible,summary:focus-visible{outline:2px solid var(--champ);outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s,filter .15s}.btn:hover{transform:translateY(-1px);filter:brightness(1.06)}}
+
+.top{border-bottom:1px solid var(--line)}
+.top .col{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;letter-spacing:.08em;font-size:.92rem}
+.brand svg{width:30px;height:30px}
+.top small{font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+
+.hero{position:relative}
+.hero .iso{position:absolute;right:-40px;top:0;width:260px;height:260px;pointer-events:none;z-index:0}
+.hero > *:not(.iso){position:relative;z-index:1}
+main{overflow:hidden}
+main .col{display:flex;flex-direction:column;gap:56px;padding-block:28px 40px}
+section{display:flex;flex-direction:column;gap:16px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+.facts div{border:1px solid var(--champ-line);border-radius:8px;padding:7px 12px;background:var(--champ-soft)}
+.facts dt{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font-family:var(--display);font-weight:600;font-size:.92rem}
+.video{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:#0d0d0f;border:1px solid var(--champ-line);display:grid;place-items:center}
+.video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.vph{font-family:var(--mono);font-size:.74rem;color:var(--muted);text-align:center;padding:0 24px;line-height:1.7}
+.unmute{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgb(20 20 23 / .82);
+  color:var(--ink);border:1px solid var(--champ-line);border-radius:999px;padding:9px 15px;font:600 .88rem var(--sans);cursor:pointer}
+.unmute svg{width:17px;height:17px;color:var(--champ)}
+.nameplate{position:absolute;z-index:2;left:12px;bottom:12px;background:rgb(20 20 23 / .82);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:.82rem;line-height:1.35}
+.fine{font-size:.82rem;color:var(--muted);text-align:center}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px}
+
+.logos{display:flex;flex-wrap:wrap;gap:8px}
+.logos span{font-family:var(--display);font-weight:600;padding:8px 16px;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr)}
+.stat{padding:16px 10px;text-align:center;border-left:1px solid var(--line);min-width:0}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-family:var(--display);font-size:1.6rem;font-weight:700;font-variant-numeric:tabular-nums}
+.stat span{font-size:.76rem;color:var(--muted)}
+.win{padding:16px 18px;display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;border-top:1px solid var(--line)}
+.win:first-child{border-top:0}
+.avatar{width:40px;height:40px;border-radius:50%;border:1px solid var(--champ-line);background:var(--champ-soft);display:grid;place-items:center;font-family:var(--display);font-weight:600;color:var(--champ)}
+.win .meta{font-size:.85rem;color:var(--muted)}
+.win .jump{font-family:var(--mono);font-size:.78rem;color:var(--good);margin-top:2px}
+.win q{display:block;margin-top:6px;font-size:.94rem;color:var(--muted)}
+
+.mentor{padding:20px;display:grid;grid-template-columns:76px 1fr;gap:18px;align-items:start}
+.portrait{width:76px;height:76px;border-radius:14px;background:var(--raised);border:1px solid var(--champ-line);display:grid;place-items:center;font-family:var(--display);font-size:1.7rem;font-weight:700;color:var(--champ)}
+.mentor > div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.mentor ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px;font-size:.94rem}
+.mentor li::marker{color:var(--champ)}
+
+.learn{display:grid;grid-template-columns:1fr}
+.learn div{padding:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px;min-width:0}
+.learn div:first-child{border-top:0}
+@media(min-width:560px){.learn{grid-template-columns:1fr 1fr}.learn div:nth-child(2n){border-left:1px solid var(--line)}.learn div:nth-child(2){border-top:0}}
+.learn i{font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--champ)}
+.learn p{font-size:.92rem;color:var(--muted)}
+
+.bonus{overflow-x:auto;border-color:var(--champ-line)}
+.bonus table{width:100%;border-collapse:collapse;font-size:.95rem}
+.bonus th{text-align:left;font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:500;padding:12px 18px;border-bottom:1px solid var(--line)}
+.bonus th:last-child,.bonus td:last-child{text-align:right}
+.bonus td{padding:13px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+.bonus td small{display:block;color:var(--muted);font-size:.82rem}
+.bonus td:last-child{font-family:var(--mono);white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--champ)}
+.bonus tfoot td{border-bottom:0;background:var(--champ-soft);font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--ink)}
+.bonus tfoot td:last-child{font-family:var(--display);color:var(--champ)}
+.bonus tfoot s{color:var(--muted);font-weight:400;margin-right:8px;font-family:var(--mono);font-size:.85rem}
+
+.fit{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:560px){.fit{grid-template-columns:1fr 1fr}}
+.fit .panel{padding:18px;min-width:0}
+.fit h3{margin-bottom:12px}
+.fit ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:.93rem}
+.fit li{display:grid;grid-template-columns:18px 1fr;gap:8px}
+.fit .yes li::before{content:"✓";color:var(--good);font-weight:700}
+.fit .no li::before{content:"✕";color:var(--bad);font-weight:700}
+
+details.q{border-bottom:1px solid var(--line);padding-block:15px}
+details.q:first-child{border-top:1px solid var(--line)}
+details.q summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{content:"+";color:var(--champ);font-family:var(--mono)}
+details.q[open] summary::after{content:"−"}
+details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
+
+.review{border:1px dashed var(--line);border-radius:10px;padding:12px 14px;font-size:.86rem;color:var(--muted)}
+.review summary{cursor:pointer;font-weight:600;color:var(--ink)}
+.review ol{margin:10px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+
+.closing{border-top:1px solid var(--line);background:radial-gradient(ellipse at 50% 0%,rgb(227 195 157 / .10),transparent 60%),var(--bg)}
+.closing .col{padding-block:44px;display:flex;flex-direction:column;gap:14px;text-align:center;align-items:center}
+.closing svg{width:44px;height:44px}
+.closing p{color:var(--muted);max-width:44ch}
+.closing .btn{width:100%;max-width:420px}
+.closing .copy{font-size:.76rem;font-family:var(--mono)}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgb(20 20 23 / .94);border-top:1px solid var(--champ-line);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.bar .in{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.bar .info{flex:1;min-width:0;font-size:.8rem;line-height:1.35;color:var(--muted)}
+.bar .info b{display:block;font-family:var(--display);font-size:.95rem;color:var(--ink)}
+.bar .btn{padding:11px 24px;white-space:nowrap}
+</style>
+</head><body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0d6b3"/><stop offset="1" stop-color="#b98468"/></linearGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3a3f"/><stop offset="1" stop-color="#0c0c0e"/></linearGradient>
+    <symbol id="cube" viewBox="0 0 100 100">
+      <path d="M12 30 L46 12 L46 52 L12 70 Z" fill="url(#face)" stroke="url(#edge)" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12 70 L46 52 L80 70 L46 88 Z" fill="url(#face)" stroke="url(#edge)" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M54 12 L84 28 L84 60" fill="none" stroke="url(#edge)" stroke-width="2" stroke-linecap="round"/>
+      <path d="M54 20 L77 33 L77 56" fill="none" stroke="url(#edge)" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top gutter">
+  <div class="col">
+    <div class="brand"><svg aria-hidden="true"><use href="#cube"/></svg>VANAKKAM DSA</div>
+    <small>LIVE · 22 NOV 2026</small>
+  </div>
+</header>
+
+<main class="gutter">
+<div class="col">
+
+  <details class="review">
+    <summary>Model page for team review: changes from the live page</summary>
+    <ol>
+      <li>Theme built from the Hayan Tech logo: graphite with champagne-gold linework.</li>
+      <li>Date, time, format and language sit right under the headline.</li>
+      <li>Student results come straight after the video. Highlighted text marks details to fill in.</li>
+      <li>The mentor is introduced by name with credentials.</li>
+      <li>Nine feature cards are merged into a six-point agenda.</li>
+      <li>Bonus values (₹20,000 total) stay, with each item labelled for what it is.</li>
+      <li>"No recording" appears once. One sticky Register bar replaces the repeated buttons.</li>
+      <li>Muted autoplay teaser with a "Tap for sound" control.</li>
+    </ol>
+  </details>
+
+  <section class="hero">
+    <svg class="iso" viewBox="0 0 300 300" aria-hidden="true" fill="none" stroke="url(#edge)" stroke-width=".8" opacity=".35">
+      <path d="M150 20 L262 85 L262 215 L150 280 L38 215 L38 85 Z"/>
+      <path d="M150 20 L150 150 M38 85 L150 150 L262 85"/>
+      <path d="M150 60 L227 105 L227 195 L150 240 L73 195 L73 105 Z" opacity=".5"/>
+    </svg>
+    <p class="label">Live workshop · 2 hours</p>
+    <h1>Stop grinding LeetCode.<br>Start cracking your <span class="gold">product company dream.</span></h1>
+    <p class="muted">25 patterns. 2 hours. In Tamil. The same method that took our students to Zoho, Freshworks and Deloitte.</p>
+    <dl class="facts">
+      <div><dt>Date</dt><dd>Sun, 22 Nov</dd></div>
+      <div><dt>Time</dt><dd>5:00 PM IST</dd></div>
+      <div><dt>Format</dt><dd>Live online</dd></div>
+      <div><dt>Language</dt><dd>Tamil</dd></div>
+    </dl>
+    <div class="video">
+      <p class="vph">Autoplay teaser goes here<br>hero-teaser.mp4 · 10–15 s · 720p · ~2 MB<br>hero-poster.jpg · ~30 KB</p>
+      <video id="hero-video" autoplay muted loop playsinline preload="metadata"
+             poster="hero-poster.jpg" width="1280" height="720" aria-label="Workshop intro from Hareesh">
+        <source src="hero-teaser.mp4" type="video/mp4">
+      </video>
+      <button class="unmute" id="unmute" type="button" aria-label="Play with sound">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
+        Tap for sound
+      </button>
+      <div class="nameplate"><b>Hareesh</b> · <span class="ph">SDE at [company]</span></div>
+    </div>
+    <div id="register" style="display:flex;flex-direction:column;gap:8px">
+      <a class="btn" href="#register">Register for ₹199 <small>UPI or card · confirmation on WhatsApp</small></a>
+      <p class="fine">Live session only, no recording. Limited to <span class="ph">[100]</span> seats.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Past cohort outcomes</p>
+    <h2>Where our students work now</h2>
+    <div class="logos"><span>Zoho</span><span>Freshworks</span><span>Deloitte</span><span class="ph">[+ more]</span></div>
+    <div class="panel stats">
+      <div class="stat"><b><span class="ph">[6]</span></b><span>Cohorts completed</span></div>
+      <div class="stat"><b><span class="ph">[1,000+]</span></b><span>Students trained</span></div>
+      <div class="stat"><b class="gold">15 LPA+</b><span>Top offers</span></div>
+    </div>
+    <div class="panel">
+      <div class="win"><span class="avatar">A</span><div>
+        <b class="ph">[Student name]</b> <span class="meta">· Cohort <span class="ph">[5]</span></span>
+        <div class="jump"><span class="ph">[Service co, 4 LPA]</span> → Zoho, <span class="ph">[15 LPA]</span></div>
+        <q class="ph">[One line in their words about what changed]</q>
+      </div></div>
+      <div class="win"><span class="avatar">K</span><div>
+        <b class="ph">[Student name]</b> <span class="meta">· Final-year student</span>
+        <div class="jump">Placed at Freshworks</div>
+        <q class="ph">[One line in their words]</q>
+      </div></div>
+      <div class="win"><span class="avatar">S</span><div>
+        <b class="ph">[Student name]</b> <span class="meta">· Working professional</span>
+        <div class="jump">Moved to Deloitte</div>
+        <q class="ph">[One line in their words]</q>
+      </div></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Your mentor</p>
+    <div class="panel mentor">
+      <span class="portrait" aria-hidden="true">H</span>
+      <div>
+        <h2>Hareesh</h2>
+        <p class="muted">Founder of Vanakkam DSA. Teaches DSA in Tamil on YouTube and has mentored <span class="ph">[number]</span> students into product companies.</p>
+        <ul>
+          <li><span class="ph">[Current or past role, company]</span></li>
+          <li><span class="ph">[YouTube subscribers]</span> on YouTube</li>
+          <li><span class="ph">[One standout credential]</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Session agenda</p>
+    <h2>What you'll learn in 2 hours</h2>
+    <div class="panel learn">
+      <div><i>01</i><h3>Identify the pattern first</h3><p>Real interview problems broken down live, naming the pattern before writing code.</p></div>
+      <div><i>02</i><h3>The patterns that repeat</h3><p>The DSA patterns product companies ask most often.</p></div>
+      <div><i>03</i><h3>Problem-solving under pressure</h3><p>A repeatable method for approaching any problem and avoiding common mistakes.</p></div>
+      <div><i>04</i><h3>A 90-day preparation plan</h3><p>A week-by-week roadmap that fits around a full-time job or college.</p></div>
+      <div><i>05</i><h3>Getting shortlisted</h3><p>What recruiters look for in your resume and LinkedIn profile.</p></div>
+      <div><i>06</i><h3>Current hiring trends</h3><p>How product company hiring has changed and how successful candidates prepare.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Included with registration</p>
+    <h2>Registration bonuses</h2>
+    <div class="panel bonus">
+      <table>
+        <thead><tr><th>Bonus</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>25 DSA patterns cheat sheet<small>Notion template</small></td><td>₹5,000</td></tr>
+          <tr><td>Resume mastery session<small>Recorded guide</small></td><td>₹5,000</td></tr>
+          <tr><td>Resume review<small>Automated ATS check, instant report</small></td><td>₹5,000</td></tr>
+          <tr><td>LinkedIn review<small>Profile checklist and feedback</small></td><td>₹3,000</td></tr>
+          <tr><td>ATS-friendly resume template<small>Google Doc</small></td><td>₹2,000</td></tr>
+        </tbody>
+        <tfoot><tr><td>Total value</td><td><s>₹20,000</s>Free with ₹199</td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Is this for you</p>
+    <h2>Who this workshop is for</h2>
+    <div class="fit">
+      <div class="panel yes"><h3>A good fit if you</h3><ul>
+        <li>Know basic coding in any language</li>
+        <li>Are targeting SDE roles at product companies</li>
+        <li>Have started DSA before but struggled to stay consistent</li>
+        <li>Want to prepare alongside your current job</li>
+      </ul></div>
+      <div class="panel no"><h3>Not a fit if you</h3><ul>
+        <li>Have not written code before</li>
+        <li>Are looking for shortcuts without practice</li>
+        <li>Don't plan to practise after the workshop</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">FAQ</p>
+    <h2>Frequently asked questions</h2>
+    <div>
+      <details class="q"><summary>Is the whole session in Tamil?</summary><p>Yes. Concepts and code walkthroughs are in Tamil, with technical terms in English.</p></details>
+      <details class="q"><summary>Will a recording be shared?</summary><p>No. The session is live only. If you miss it, you can join the next workshop.</p></details>
+      <details class="q"><summary>How do I join after paying?</summary><p>The joining link is sent on WhatsApp and email right after payment, with a reminder before 5 PM on 22 Nov.</p></details>
+      <details class="q"><summary>Can freshers attend?</summary><p>Yes, as long as you know basic coding in any one language.</p></details>
+      <details class="q"><summary>Who do I contact about payment issues?</summary><p>Message us on WhatsApp at <span class="ph">[number]</span>.</p></details>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<section class="closing gutter">
+  <div class="col">
+    <svg aria-hidden="true"><use href="#cube"/></svg>
+    <h2>Sunday, 22 November · <span class="gold">5:00 PM IST</span></h2>
+    <p>Two hours, live in Tamil. Leave with a 90-day plan and the patterns that come up in real interviews.</p>
+    <a class="btn" href="#register">Register for ₹199</a>
+    <p class="copy">© 2026 Hayan Tech. All rights reserved.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var v = document.getElementById('hero-video');
+  var b = document.getElementById('unmute');
+  if (!v || !b) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    v.removeAttribute('autoplay'); v.pause();
+  }
+  b.addEventListener('click', function(){
+    v.muted = false; v.loop = false; v.currentTime = 0; v.controls = true;
+    var p = v.play(); if (p && p.catch) p.catch(function(){});
+    b.hidden = true;
+  });
+})();
+</script>
+
+<div class="bar"><div class="in">
+  <div class="info"><b>₹199 · Live in Tamil</b>22 Nov, 5:00 PM IST</div>
+  <a class="btn" href="#register">Register</a>
+</div></div>
+
+</body></html>
