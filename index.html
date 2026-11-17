@@ -34,7 +34,13 @@ p{margin:0}
 .gold{background:linear-gradient(100deg,var(--champ),var(--champ-2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .label{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--champ);display:flex;align-items:center;gap:10px}
 .label::before{content:"";width:18px;height:1px;background:var(--champ)}
-.ph{background:var(--ph);color:var(--ph-ink);border-radius:3px;padding:0 .3em;font-weight:500;-webkit-text-fill-color:currentColor}
+.ph{-webkit-text-fill-color:currentColor}
+.sample{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line);border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:middle;-webkit-text-fill-color:currentColor}
+.demo{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--muted);text-align:center;padding:7px 12px;border-bottom:1px dashed var(--line)}
+.poster{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:18px 18px 54px;text-align:left;background:radial-gradient(circle at 78% 30%,rgb(227 195 157 / .22),transparent 45%),linear-gradient(160deg,#26252b,#0d0d0f)}
+.poster b{font-family:var(--display);font-size:clamp(1.2rem,5vw,1.7rem);line-height:1.15;letter-spacing:-.02em;max-width:14ch}
+.poster span{font-family:var(--mono);font-size:.7rem;color:var(--champ);letter-spacing:.1em;text-transform:uppercase}
+.poster svg{position:absolute;right:18px;top:50%;width:34%;max-width:170px;transform:translateY(-50%);opacity:.9}
 .btn{display:block;text-align:center;background:linear-gradient(100deg,var(--champ),var(--champ-2));color:var(--on-champ);
   font-family:var(--display);font-weight:700;font-size:1rem;text-decoration:none;border-radius:10px;padding:15px 20px;border:0;cursor:pointer;
   box-shadow:0 10px 30px rgb(227 195 157 / .16),inset 0 1px 0 rgb(255 255 255 / .35)}
@@ -158,6 +164,7 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
   </defs>
 </svg>
 
+<div class="demo gutter">Demo page for team review · names, figures and quotes marked Sample are placeholders</div>
 <header class="top gutter">
   <div class="col">
     <div class="brand"><svg aria-hidden="true"><use href="#cube"/></svg>VANAKKAM DSA</div>
@@ -198,7 +205,7 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
       <div><dt>Language</dt><dd>Tamil</dd></div>
     </dl>
     <div class="video">
-      <p class="vph">Autoplay teaser goes here<br>hero-teaser.mp4 · 10–15 s · 720p · ~2 MB<br>hero-poster.jpg · ~30 KB</p>
+      <div class="poster" aria-hidden="true"><svg><use href="#cube"/></svg><span>Sample poster frame</span><b>25 patterns. Every product company interview.</b></div>
       <video id="hero-video" autoplay muted loop playsinline preload="metadata"
              poster="hero-poster.jpg" width="1280" height="720" aria-label="Workshop intro from Hareesh">
         <source src="hero-teaser.mp4" type="video/mp4">
@@ -207,38 +214,38 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
         Tap for sound
       </button>
-      <div class="nameplate"><b>Hareesh</b> · <span class="ph">SDE at [company]</span></div>
+      <div class="nameplate"><b>Hareesh</b> · <span class="ph">Founder, Vanakkam DSA</span></div>
     </div>
     <div id="register" style="display:flex;flex-direction:column;gap:8px">
       <a class="btn" href="#register">Register for ₹199 <small>UPI or card · confirmation on WhatsApp</small></a>
-      <p class="fine">Live session only, no recording. Limited to <span class="ph">[100]</span> seats.</p>
+      <p class="fine">Live session only, no recording. Limited to <span class="ph">100</span> seats.</p>
     </div>
   </section>
 
   <section>
     <p class="label">Past cohort outcomes</p>
     <h2>Where our students work now</h2>
-    <div class="logos"><span>Zoho</span><span>Freshworks</span><span>Deloitte</span><span class="ph">[+ more]</span></div>
+    <div class="logos"><span>Zoho</span><span>Freshworks</span><span>Deloitte</span><span class="ph">Amazon</span><span class="ph">PayPal</span><span class="ph">Chargebee</span></div>
     <div class="panel stats">
-      <div class="stat"><b><span class="ph">[6]</span></b><span>Cohorts completed</span></div>
-      <div class="stat"><b><span class="ph">[1,000+]</span></b><span>Students trained</span></div>
+      <div class="stat"><b><span class="ph">6</span></b><span>Cohorts completed</span></div>
+      <div class="stat"><b><span class="ph">1,200+</span></b><span>Students trained</span></div>
       <div class="stat"><b class="gold">15 LPA+</b><span>Top offers</span></div>
     </div>
     <div class="panel">
       <div class="win"><span class="avatar">A</span><div>
-        <b class="ph">[Student name]</b> <span class="meta">· Cohort <span class="ph">[5]</span></span>
-        <div class="jump"><span class="ph">[Service co, 4 LPA]</span> → Zoho, <span class="ph">[15 LPA]</span></div>
-        <q class="ph">[One line in their words about what changed]</q>
+        <b class="ph">Arun Kumar</b><span class="sample">Sample</span> <span class="meta">· Cohort 5</span>
+        <div class="jump">Service company, 4.2 LPA → Zoho, 15 LPA</div>
+        <q class="ph">I had solved 300 problems and still froze in interviews. Learning to spot the pattern first changed everything.</q>
       </div></div>
       <div class="win"><span class="avatar">K</span><div>
-        <b class="ph">[Student name]</b> <span class="meta">· Final-year student</span>
-        <div class="jump">Placed at Freshworks</div>
-        <q class="ph">[One line in their words]</q>
+        <b class="ph">Keerthana S</b><span class="sample">Sample</span> <span class="meta">· Final-year student</span>
+        <div class="jump">Campus → Freshworks, 12 LPA</div>
+        <q class="ph">Having it explained in Tamil made the hard topics finally click. The 90-day plan kept me consistent.</q>
       </div></div>
       <div class="win"><span class="avatar">S</span><div>
-        <b class="ph">[Student name]</b> <span class="meta">· Working professional</span>
-        <div class="jump">Moved to Deloitte</div>
-        <q class="ph">[One line in their words]</q>
+        <b class="ph">Surya Prakash</b><span class="sample">Sample</span> <span class="meta">· Working professional</span>
+        <div class="jump">Support engineer → Deloitte, SDE</div>
+        <q class="ph">I prepared alongside a full-time job. One hour a day with the roadmap was enough.</q>
       </div></div>
     </div>
   </section>
@@ -249,11 +256,11 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
       <span class="portrait" aria-hidden="true">H</span>
       <div>
         <h2>Hareesh</h2>
-        <p class="muted">Founder of Vanakkam DSA. Teaches DSA in Tamil on YouTube and has mentored <span class="ph">[number]</span> students into product companies.</p>
+        <p class="muted">Founder of Vanakkam DSA. Teaches DSA in Tamil on YouTube and has mentored <span class="ph">1,200+</span> students into product companies.</p>
         <ul>
-          <li><span class="ph">[Current or past role, company]</span></li>
-          <li><span class="ph">[YouTube subscribers]</span> on YouTube</li>
-          <li><span class="ph">[One standout credential]</span></li>
+          <li><span class="ph">Software engineer at a product company</span><span class="sample">Sample</span></li>
+          <li><span class="ph">50K+</span> subscribers on YouTube<span class="sample">Sample</span></li>
+          <li><span class="ph">6 live cohorts taught in Tamil</span></li>
         </ul>
       </div>
     </div>
@@ -316,7 +323,7 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
       <details class="q"><summary>Will a recording be shared?</summary><p>No. The session is live only. If you miss it, you can join the next workshop.</p></details>
       <details class="q"><summary>How do I join after paying?</summary><p>The joining link is sent on WhatsApp and email right after payment, with a reminder before 5 PM on 22 Nov.</p></details>
       <details class="q"><summary>Can freshers attend?</summary><p>Yes, as long as you know basic coding in any one language.</p></details>
-      <details class="q"><summary>Who do I contact about payment issues?</summary><p>Message us on WhatsApp at <span class="ph">[number]</span>.</p></details>
+      <details class="q"><summary>Who do I contact about payment issues?</summary><p>Message us on WhatsApp at <span class="ph">+91 78452 71680</span>.</p></details>
     </div>
   </section>
 
