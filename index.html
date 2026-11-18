@@ -281,10 +281,28 @@ body.bar-on{padding-bottom:104px}
   </defs>
 </svg>
 
+<script>
+/* ============ WEBINAR SETTINGS: edit only this block ============
+   date        : workshop date, YYYY-MM-DD
+   time        : start time in IST, 24-hour HH:MM
+   durationHrs : length in hours
+   registerUrl : TagMango (or any) checkout link for every Register button
+   price       : ticket price in rupees
+   seats       : seat limit shown on the main button
+   ================================================================ */
+window.WEBINAR = {
+  date: "2026-11-22",
+  time: "17:00",
+  durationHrs: 2,
+  registerUrl: "#register",
+  price: 199,
+  seats: 100
+};
+</script>
 <header class="top gutter">
   <div class="col">
     <div class="brand"><svg aria-hidden="true"><use href="#cube"/></svg>VANAKKAM DSA</div>
-    <small>LIVE · 22 NOV 2026</small>
+    <small data-w="headerDate">LIVE · 22 NOV 2026</small>
   </div>
 </header>
 
@@ -300,7 +318,7 @@ body.bar-on{padding-bottom:104px}
     <h1>Stop grinding LeetCode.<br>Learn how to land your <span class="gold">dream product company job.</span></h1>
     <p class="sub">The expert-level method to master DSA and crack FAANG and top tech interviews. Live, in Tamil.</p>
     <ul class="facts" aria-label="Workshop details">
-      <li>Sun, 22 Nov</li><li>5 PM IST</li><li>2 hrs live</li><li>Tamil</li>
+      <li data-w="dayDate">Sun, 22 Nov</li><li data-w="timeShort">5 PM IST</li><li data-w="duration">2 hrs live</li><li>Tamil</li>
     </ul>
     <div class="video">
       <div class="poster" aria-hidden="true"><svg><use href="#cube"/></svg><span>Sample poster frame</span><b>25 patterns. Every product company interview.</b></div>
@@ -315,7 +333,7 @@ body.bar-on{padding-bottom:104px}
       <div class="nameplate"><b>Hareesh</b> · <span class="ph">Founder, Vanakkam DSA</span></div>
     </div>
     <div id="register">
-      <a class="btn" href="#register">Register for ₹199 <small>Limited to <span class="ph">100</span> seats</small></a>
+      <a class="btn" href="#register" data-register>Register for <span data-w="price">₹199</span> <small>Limited to <span data-w="seats">100</span> seats</small></a>
     </div>
   </section>
 
@@ -415,10 +433,10 @@ body.bar-on{padding-bottom:104px}
           <tr><td>LinkedIn review<small>Profile checklist and feedback</small></td><td><span class="amt">₹3,000</span></td></tr>
           <tr><td>ATS-friendly resume template<small>Google Doc</small></td><td><span class="amt">₹2,000</span></td></tr>
         </tbody>
-        <tfoot><tr><td colspan="2"><div class="totrow"><span>Total value</span><div class="tot"><span class="was">Worth <s>₹20,000</s></span><a class="free" href="#register">FREE with ₹199 <span aria-hidden="true">→</span></a></div></div></td></tr></tfoot>
+        <tfoot><tr><td colspan="2"><div class="totrow"><span>Total value</span><div class="tot"><span class="was">Worth <s>₹20,000</s></span><a class="free" href="#register" data-register>FREE with <span data-w="price">₹199</span> <span aria-hidden="true">→</span></a></div></div></td></tr></tfoot>
       </table>
     </div>
-    <a class="btn" href="#register">Claim bonuses · Register for ₹199</a>
+    <a class="btn" href="#register" data-register>Claim bonuses · Register for <span data-w="price">₹199</span></a>
   </section>
 
   <section>
@@ -444,7 +462,7 @@ body.bar-on{padding-bottom:104px}
     <h2>Frequently asked questions</h2>
     <div>
       <details class="q"><summary>Is the whole session in Tamil?</summary><p>Yes. Concepts and code walkthroughs are in Tamil, with technical terms in English.</p></details>
-      <details class="q"><summary>How do I join after paying?</summary><p>The joining link is sent on WhatsApp and email right after payment, with a reminder before 5 PM on 22 Nov.</p></details>
+      <details class="q"><summary>How do I join after paying?</summary><p>The joining link is sent on WhatsApp and email right after payment, with a reminder before <span data-w="timeShortNoTz">5 PM</span> on <span data-w="dateShort">22 Nov</span>.</p></details>
       <details class="q"><summary>Can freshers attend?</summary><p>Yes, as long as you know basic coding in any one language.</p></details>
       <details class="q"><summary>Who do I contact about payment issues?</summary><p>Message us on WhatsApp at <span class="ph">+91 78452 71680</span>.</p></details>
     </div>
@@ -472,9 +490,9 @@ body.bar-on{padding-bottom:104px}
 <section class="closing gutter">
   <div class="col">
     <svg aria-hidden="true"><use href="#cube"/></svg>
-    <h2>Sunday, 22 November · <span class="gold">5:00 PM IST</span></h2>
+    <h2><span data-w="dateLong">Sunday, 22 November</span> · <span class="gold" data-w="timeLong">5:00 PM IST</span></h2>
     <p>Two hours, live in Tamil. Leave with a 90-day plan and the patterns that come up in real interviews.</p>
-    <a class="btn" href="#register">Register for ₹199</a>
+    <a class="btn" href="#register" data-register>Register for <span data-w="price">₹199</span></a>
     <div class="legal">
       <p><b>Disclaimer:</b> This site is not a part of the Facebook website or Meta Platforms, Inc., and is not endorsed by Facebook or Meta in any way. FACEBOOK and INSTAGRAM are trademarks of Meta Platforms, Inc. Company names and logos shown are trademarks of their respective owners, used only to describe the interview patterns covered; Vanakkam DSA is not affiliated with or endorsed by them. Student outcomes are individual experiences and are not typical or guaranteed; results depend on your effort and practice, and this workshop does not guarantee a job, interview or salary. Names, figures and quotes marked Sample are placeholders on this demo page.</p>
       <nav aria-label="Legal"><a href="#privacy">Privacy Policy</a><a href="#terms">Terms &amp; Conditions</a><a href="#refund">Refund Policy</a><a href="#contact">Contact</a></nav>
@@ -526,8 +544,36 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <div class="bar"><div class="in">
-  <div class="info"><b>₹199 · Live in Tamil</b>22 Nov, 5:00 PM IST</div>
-  <a class="btn" href="#register">Register</a>
+  <div class="info"><b><span data-w="price">₹199</span> · Live in Tamil</b><span data-w="dateTime">22 Nov, 5:00 PM IST</span></div>
+  <a class="btn" href="#register" data-register>Register</a>
 </div></div>
+
+<script>
+(function(){
+  var W=window.WEBINAR||{}; if(!W.date||!W.time) return;
+  var d=new Date(W.date+"T"+W.time+":00+05:30"), tz="Asia/Kolkata";
+  function f(o){ return new Intl.DateTimeFormat("en-IN",Object.assign({timeZone:tz},o)).format(d); }
+  var mins=d.toLocaleString("en-US",{timeZone:tz,minute:"2-digit"}).padStart(2,"0");
+  var hShort=f({hour:"numeric",hour12:true}).replace(/\s?(am|pm)/i,function(m,x){return " "+x.toUpperCase();});
+  var tShort=(mins==="00"? hShort : f({hour:"numeric",minute:"2-digit",hour12:true}).toUpperCase());
+  var tLong=f({hour:"numeric",minute:"2-digit",hour12:true}).toUpperCase();
+  var day=f({day:"numeric"}), monS=f({month:"short"}), monL=f({month:"long"}), year=f({year:"numeric"});
+  var V={
+    headerDate:"LIVE · "+day+" "+monS.toUpperCase()+" "+year,
+    dayDate:f({weekday:"short"})+", "+day+" "+monS,
+    dateShort:day+" "+monS,
+    dateLong:f({weekday:"long"})+", "+day+" "+monL,
+    timeShort:tShort+" IST",
+    timeShortNoTz:tShort,
+    timeLong:tLong+" IST",
+    dateTime:day+" "+monS+", "+tLong+" IST",
+    duration:(W.durationHrs||2)+" hrs live",
+    price:"₹"+Number(W.price||199).toLocaleString("en-IN"),
+    seats:String(W.seats||100)
+  };
+  document.querySelectorAll("[data-w]").forEach(function(el){ var v=V[el.getAttribute("data-w")]; if(v!=null) el.textContent=v; });
+  if(W.registerUrl){ document.querySelectorAll("[data-register]").forEach(function(a){ a.href=W.registerUrl; }); }
+})();
+</script>
 
 </body></html>

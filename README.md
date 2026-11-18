@@ -1,39 +1,78 @@
-# Vanakkam DSA workshop landing page (demo)
+# Vanakkam DSA webinar landing page: developer handoff
 
-Model landing page for the 22 Nov Vanakkam DSA live workshop. Everything is in `index.html` (no build step).
-Live demo: https://dineshkumarsd.github.io/vanakkam-dsa-webinar-demo/
+**Reference design (live):** https://dineshkumarsd.github.io/vanakkam-dsa-webinar-demo/
+**Source:** `index.html` in this repo, one self-contained file (HTML + CSS + JS, no build step).
 
-## Hero video setup
+Please rebuild this page on the Vanakkam DSA site (e.g. `vanakkamdsa.com/webinar`) so it looks and behaves exactly like the reference, and keep it as a **reusable template**: for every new webinar we should only need to change the date, time and register link in one place.
 
-The hero uses a short muted teaser that autoplays, with a "Tap for sound" button.
+---
+
+## 1. The one place to edit for each webinar
+
+Near the top of `index.html` there is a single settings block:
+
+```js
+window.WEBINAR = {
+  date: "2026-11-22",        // YYYY-MM-DD
+  time: "17:00",             // start time in IST, 24-hour HH:MM
+  durationHrs: 2,
+  registerUrl: "#register",  // TagMango checkout link for EVERY Register button
+  price: 199,                // rupees
+  seats: 100
+};
+```
+
+Changing these values updates every place on the page automatically:
+
+| Setting | Where it appears |
+|---|---|
+| `date` + `time` | Header ("LIVE · 22 NOV 2026"), hero pills ("Sun, 22 Nov", "5 PM IST"), FAQ reminder line, closing section ("Sunday, 22 November · 5:00 PM IST"), floating bar ("22 Nov, 5:00 PM IST") |
+| `durationHrs` | Hero pill ("2 hrs live") |
+| `registerUrl` | All 5 Register buttons: hero, "FREE with ₹199" badge, "Claim bonuses", closing CTA, floating bar |
+| `price` | Every "₹199" on buttons, bonus total and floating bar |
+| `seats` | "Limited to 100 seats" on the hero button |
+
+How it works: elements carry `data-w="…"` (text slots) and `data-register` (links). A small script at the end of the page formats the date/time in IST and fills them in. The static text in the HTML stays as a fallback.
+
+**If you move this into a CMS / WordPress / Next.js:** expose these six values as page fields (or a JSON/front-matter file) and render the same slots server-side. Server-side rendering is preferred so the correct date shows instantly and in link previews.
+
+Test: change `date` to `2026-12-06`, `time` to `18:30`, `price` to `299`. The page should read "6 Dec", "6:30 PM IST", "₹299" everywhere, with no other edits.
+
+---
+
+## 2. Must-match details
+
+- **Theme:** graphite background (`#141417`), champagne-gold accents from the Hayan Tech logo. All colours are CSS variables at the top of `<style>`.
+- **Fonts:** Sora (headings), Manrope (body), JetBrains Mono (labels) from Google Fonts.
+- **First screen (no scroll):** headline, detail pills, video and Register button must all be visible on a 360×640 phone. Please re-check on real devices and in the Instagram / Facebook in-app browser.
+- **Glowing CTAs:** pulsing halo + light sweep (`@keyframes glow` / `shine`); disabled for users with reduced-motion on.
+- **Floating Register bar:** hidden until the hero CTA scrolls out of view (IntersectionObserver), then floats above the bottom edge.
+- **Logo strip:** Google, Amazon, Meta + "13 more" (official marks from Simple Icons). Keep the label "Learn interview patterns from FAANG and top product companies". Don't change it to "our students work at" unless placements are verified.
+- **Student stories carousel:** swipe / arrows / dots, auto-advances every 5 s, stops on touch.
+- **Single footer disclaimer** (Meta + trademarks + results). Keep it; it's needed for Meta ad review.
+
+---
+
+## 3. Hero video
 
 | File | Spec |
 |---|---|
-| `hero-teaser.mp4` | 10–15 s cut of Hareesh's intro, 1280×720, H.264 MP4, ~1 Mbps, about 2 MB, first 2 s should hook without sound (add captions) |
-| `hero-poster.jpg` | Still frame from the video, 1280×720 JPG, under 40 KB |
+| `hero-teaser.mp4` | 10–15 s cut of Hareesh's intro, 1280×720, H.264, ~1 Mbps (~2 MB), burned-in captions |
+| `hero-poster.jpg` | Still frame, 1280×720, under 40 KB |
 
-Steps:
-1. Put both files in the same folder as `index.html`.
-2. The `<video>` tag already has `autoplay muted loop playsinline preload="metadata"`:
-   - `muted` is required for autoplay on phones
-   - `playsinline` stops iPhones opening the video fullscreen
-   - `preload="metadata"` keeps the first screen fast
-3. "Tap for sound" restarts the video from 0:00 with sound, turns off looping and shows the player controls.
-4. If you want the full-length intro after unmute, swap the `src` to the full video inside the click handler at the bottom of the page.
-5. Delete the `<div class="poster">…</div>` sample frame inside `.video` once the real files are live.
-6. For extra speed, host the MP4 on a CDN (Bunny, Cloudflare R2/Stream) and use that URL in `<source src>`.
+- The `<video>` already uses `autoplay muted loop playsinline preload="metadata"` (muted is required for phone autoplay; playsinline stops iPhone fullscreen).
+- "Tap for sound" restarts from 0:00 with sound and controls.
+- Delete the sample `<div class="poster">` frame once the real files are in. Host the MP4 on a CDN (Bunny / Cloudflare) for speed.
 
-## Student stories carousel
+---
 
-- Each slide has a "Student photo" box. Replace the `<div class="shot">…</div>` with
-  `<img class="shot" src="students/arun.webp" alt="Arun Kumar" loading="lazy" width="800" height="500">` (16:10, WebP, under 60 KB).
-- Use real names, outcomes and quotes only, with each student's written consent, and remove the "Sample" tags.
-- The carousel auto-advances every 5 s, stops when the visitor touches it, and supports swipe, arrows and dots.
+## 4. Replace before launch
 
-## Before going live
-
-- Replace sample stats, testimonials and mentor credentials with real ones.
-- Point the Register buttons to the TagMango checkout link.
-- Link Privacy Policy, Terms and Refund Policy to real pages (needed for Meta ad review).
-- Add the Meta Pixel / Conversions API snippet.
-- Remove `<meta name="robots" content="noindex">` only if you want the page indexed.
+- [ ] Student stories: real names, outcomes, quotes and photos (16:10 WebP, under 60 KB) with written consent; remove all "Sample" tags.
+- [ ] Stats (cohorts, students trained) and mentor credentials: real numbers; remove "Sample" tags.
+- [ ] "Where our students work now" logos: only companies with verified placements.
+- [ ] Footer links: Privacy Policy, Terms, Refund Policy, Contact → real pages (Meta checks these).
+- [ ] Remove the last "Sample" sentence from the disclaimer and the team-review notes block at the bottom.
+- [ ] Add Meta Pixel + Conversions API; fire `Lead`/`InitiateCheckout` on Register click, and `Purchase` from TagMango.
+- [ ] Remove `<meta name="robots" content="noindex">` only if the page should be indexed.
+- [ ] Mentor photo is embedded as base64. Swap it for a normal image file on your server if you prefer.
