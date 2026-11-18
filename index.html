@@ -224,6 +224,28 @@ body.bar-on{padding-bottom:88px}
 .dots{display:flex;gap:8px}
 .dots button{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:var(--line);cursor:pointer;transition:width .2s,background .2s}
 .dots button[aria-current="true"]{width:22px;background:var(--champ)}
+
+/* glowing CTAs: brighter than anything else on the page */
+.btn{position:relative;overflow:hidden;isolation:isolate;
+  background:linear-gradient(100deg,#f6dcb6,#e3c39d 45%,#cf9f80);
+  box-shadow:0 0 0 1px rgb(255 228 190 / .55),0 0 18px rgb(240 200 150 / .55),0 0 46px rgb(227 195 157 / .35),inset 0 1px 0 rgb(255 255 255 / .55)}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgb(255 255 255 / .55) 48%,transparent 66%);transform:translateX(-120%)}
+@media (prefers-reduced-motion:no-preference){
+  .btn{animation:glow 2.4s ease-in-out infinite}
+  .btn::after{animation:shine 3.2s ease-in-out infinite}
+  @keyframes glow{50%{box-shadow:0 0 0 1px rgb(255 232 198 / .8),0 0 28px rgb(245 205 155 / .8),0 0 70px rgb(227 195 157 / .5),inset 0 1px 0 rgb(255 255 255 / .6)}}
+  @keyframes shine{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+}
+/* floating CTA: a detached pill above the bottom edge */
+.bar{left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));
+  padding:10px 10px 10px 18px;border:1px solid var(--champ-line);border-radius:18px;
+  background:rgb(28 28 32 / .92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  box-shadow:0 18px 40px rgb(0 0 0 / .55),0 0 30px rgb(227 195 157 / .12);
+  max-width:680px;margin:0 auto;transform:translateY(160%)}
+.bar.show{transform:none}
+.bar .in{max-width:none}
+.bar .btn{padding:12px 22px;border-radius:12px}
+body.bar-on{padding-bottom:104px}
 </style>
 </head><body>
 
@@ -476,13 +498,13 @@ body.bar-on{padding-bottom:88px}
 })();
 </script>
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded',function(){
   var bar=document.querySelector('.bar'), cta=document.getElementById('register');
   if(!bar||!cta) return;
   document.body.classList.add('bar-on');
   if(!('IntersectionObserver' in window)){bar.classList.add('show');return;}
   new IntersectionObserver(function(e){bar.classList.toggle('show',!e[0].isIntersecting);}).observe(cta);
-})();
+});
 </script>
 <div class="bar"><div class="in">
   <div class="info"><b>₹199 · Live in Tamil</b>22 Nov, 5:00 PM IST</div>
