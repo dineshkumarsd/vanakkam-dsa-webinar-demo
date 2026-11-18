@@ -258,8 +258,12 @@ body.bar-on{padding-bottom:104px}
 .bonus .tot{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .bonus .was{font-family:var(--mono);font-size:.8rem;color:var(--muted);font-weight:400}
 .bonus .was s{color:var(--ink);text-decoration-color:#f0a29a;text-decoration-thickness:2px;margin:0}
-.bonus .free{font-family:var(--display);font-weight:800;font-size:1rem;letter-spacing:.01em;color:#0f2a1c;background:linear-gradient(100deg,#a8ecc6,#6fd6a2);
+.bonus .free{text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-weight:800;font-size:1rem;letter-spacing:.01em;color:#0f2a1c;background:linear-gradient(100deg,#a8ecc6,#6fd6a2);
   border-radius:999px;padding:6px 14px;box-shadow:0 0 0 1px rgb(168 236 198 / .6),0 0 22px rgb(111 214 162 / .45);white-space:nowrap}
+.bonus .free:hover{filter:brightness(1.08)}
+.bonus .free:focus-visible{outline:2px solid #a8ecc6;outline-offset:3px}
+.bonus .totrow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--ink)}
+.bonus tfoot td{text-align:left!important;width:auto!important}
 </style>
 </head><body>
 
@@ -411,9 +415,10 @@ body.bar-on{padding-bottom:104px}
           <tr><td>LinkedIn review<small>Profile checklist and feedback</small></td><td><span class="amt">₹3,000</span></td></tr>
           <tr><td>ATS-friendly resume template<small>Google Doc</small></td><td><span class="amt">₹2,000</span></td></tr>
         </tbody>
-        <tfoot><tr><td>Total value</td><td><div class="tot"><span class="was">Worth <s>₹20,000</s></span><span class="free">FREE with ₹199</span></div></td></tr></tfoot>
+        <tfoot><tr><td colspan="2"><div class="totrow"><span>Total value</span><div class="tot"><span class="was">Worth <s>₹20,000</s></span><a class="free" href="#register">FREE with ₹199 <span aria-hidden="true">→</span></a></div></div></td></tr></tfoot>
       </table>
     </div>
+    <a class="btn" href="#register">Claim bonuses · Register for ₹199</a>
   </section>
 
   <section>
