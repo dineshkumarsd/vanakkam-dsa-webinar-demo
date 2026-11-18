@@ -15,7 +15,7 @@ Near the top of `index.html` there is a single settings block:
 window.WEBINAR = {
   date: "2026-11-22",        // YYYY-MM-DD
   time: "17:00",             // start time in IST, 24-hour HH:MM
-  durationHrs: 2,
+  durationHrs: 3,
   registerUrl: "#register",  // TagMango checkout link for EVERY Register button
   price: 199,                // rupees
   seats: 100
@@ -27,10 +27,10 @@ Changing these values updates every place on the page automatically:
 | Setting | Where it appears |
 |---|---|
 | `date` + `time` | Header ("LIVE · 22 NOV 2026"), hero pills ("Sun, 22 Nov", "5 PM IST"), FAQ reminder line, closing section ("Sunday, 22 November · 5:00 PM IST"), floating bar ("22 Nov, 5:00 PM IST") |
-| `durationHrs` | Hero pill ("2 hrs live") |
+| `durationHrs` | Hero pill and hero button ("3 hrs live") |
 | `registerUrl` | All 5 Register buttons: hero, "FREE with ₹199" badge, "Claim bonuses", closing CTA, floating bar |
 | `price` | Every "₹199" on buttons, bonus total and floating bar |
-| `seats` | "Limited to 100 seats" on the hero button |
+| `seats` | Reserved (not displayed right now) |
 
 How it works: elements carry `data-w="…"` (text slots) and `data-register` (links). A small script at the end of the page formats the date/time in IST and fills them in. The static text in the HTML stays as a fallback.
 
