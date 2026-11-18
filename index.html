@@ -172,6 +172,32 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
 .qs .pat{display:inline-block;font-family:var(--mono);font-size:.74rem;color:var(--champ);border:1px solid var(--champ-line);background:var(--champ-soft);border-radius:999px;padding:2px 9px;white-space:nowrap}
 .qs td:last-child{color:var(--muted);font-size:.86rem;white-space:nowrap}
 .note{font-size:.8rem;color:var(--muted)}
+
+/* first screen: headline, details, video and CTA fit without scrolling */
+.top .col{padding-block:10px}
+main .col{padding-block:14px 40px}
+.hero{gap:12px}
+.hero h1{font-size:clamp(1.6rem,6.9vw,3.05rem);line-height:1.1}
+.sub{font-size:clamp(.9rem,3.6vw,1.05rem);line-height:1.45;color:var(--muted)}
+ul.facts{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}
+ul.facts li{font-family:var(--display);font-weight:600;font-size:clamp(.72rem,3.2vw,.82rem);border:1px solid var(--champ-line);background:var(--champ-soft);border-radius:999px;padding:5px clamp(8px,2.4vw,11px);white-space:nowrap}
+.hero .btn{padding:13px 18px}
+.hero .poster{padding:14px 14px 48px}
+.hero .poster b{font-size:clamp(1.05rem,4.6vw,1.7rem)}
+.hero .iso{width:200px;height:200px;top:-20px}
+.bar{transform:translateY(110%);transition:transform .25s ease}
+.bar.show{transform:none}
+@media (prefers-reduced-motion:reduce){.bar{transition:none}}
+body{padding-bottom:0}
+body.bar-on{padding-bottom:88px}
+@media (min-width:960px){
+  .hero{display:grid;grid-template-columns:1fr 1.1fr;column-gap:44px;row-gap:14px;align-content:center;
+    width:min(1080px,calc(100vw - 64px));margin-left:calc(50% - min(540px,50vw - 32px))}
+  .hero > h1,.hero > .sub,.hero > .facts,.hero > #register{grid-column:1}
+  .hero > .video{grid-column:2;grid-row:1 / span 4;align-self:center}
+  .hero h1{font-size:clamp(2.2rem,3.4vw,3rem)}
+  .hero .iso{right:auto;left:38%}
+}
 </style>
 </head><body>
 
@@ -189,7 +215,6 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
   </defs>
 </svg>
 
-<div class="demo gutter">Demo page for team review · names, figures and quotes marked Sample are placeholders</div>
 <header class="top gutter">
   <div class="col">
     <div class="brand"><svg aria-hidden="true"><use href="#cube"/></svg>VANAKKAM DSA</div>
@@ -200,35 +225,17 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
 <main class="gutter">
 <div class="col">
 
-  <details class="review">
-    <summary>Model page for team review: changes from the live page</summary>
-    <ol>
-      <li>Theme built from the Hayan Tech logo: graphite with champagne-gold linework.</li>
-      <li>Date, time, format and language sit right under the headline.</li>
-      <li>Student results come straight after the video. Highlighted text marks details to fill in.</li>
-      <li>The mentor is introduced by name with credentials.</li>
-      <li>Nine feature cards are merged into a six-point agenda.</li>
-      <li>Bonus values (₹20,000 total) stay, with each item labelled for what it is.</li>
-      <li>"No recording" appears once. One sticky Register bar replaces the repeated buttons.</li>
-      <li>Muted autoplay teaser with a "Tap for sound" control.</li>
-    </ol>
-  </details>
-
   <section class="hero">
     <svg class="iso" viewBox="0 0 300 300" aria-hidden="true" fill="none" stroke="url(#edge)" stroke-width=".8" opacity=".35">
       <path d="M150 20 L262 85 L262 215 L150 280 L38 215 L38 85 Z"/>
       <path d="M150 20 L150 150 M38 85 L150 150 L262 85"/>
       <path d="M150 60 L227 105 L227 195 L150 240 L73 195 L73 105 Z" opacity=".5"/>
     </svg>
-    <p class="label">Live workshop · 2 hours</p>
     <h1>Stop grinding LeetCode.<br>Learn how to land your <span class="gold">dream product company job.</span></h1>
-    <p class="muted">In this live workshop, learn the expert-level method to master DSA and crack coding interviews at FAANG and top tech companies. 25 patterns, 2 hours, taught in Tamil.</p>
-    <dl class="facts">
-      <div><dt>Date</dt><dd>Sun, 22 Nov</dd></div>
-      <div><dt>Time</dt><dd>5:00 PM IST</dd></div>
-      <div><dt>Format</dt><dd>Live online</dd></div>
-      <div><dt>Language</dt><dd>Tamil</dd></div>
-    </dl>
+    <p class="sub">The expert-level method to master DSA and crack FAANG and top tech interviews. Live, in Tamil.</p>
+    <ul class="facts" aria-label="Workshop details">
+      <li>Sun, 22 Nov</li><li>5 PM IST</li><li>2 hrs live</li><li>Tamil</li>
+    </ul>
     <div class="video">
       <div class="poster" aria-hidden="true"><svg><use href="#cube"/></svg><span>Sample poster frame</span><b>25 patterns. Every product company interview.</b></div>
       <video id="hero-video" autoplay muted loop playsinline preload="metadata"
@@ -241,9 +248,8 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
       </button>
       <div class="nameplate"><b>Hareesh</b> · <span class="ph">Founder, Vanakkam DSA</span></div>
     </div>
-    <div id="register" style="display:flex;flex-direction:column;gap:8px">
-      <a class="btn" href="#register">Register for ₹199 <small>UPI or card · confirmation on WhatsApp</small></a>
-      <p class="fine">Live session only, no recording. Limited to <span class="ph">100</span> seats.</p>
+    <div id="register">
+      <a class="btn" href="#register">Register for ₹199 <small>Live only, no recording · <span class="ph">100</span> seats</small></a>
     </div>
   </section>
 
@@ -370,6 +376,20 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
     </div>
   </section>
 
+  <details class="review">
+    <summary>Model page for team review: changes from the live page</summary>
+    <ol>
+      <li>Theme built from the Hayan Tech logo: graphite with champagne-gold linework.</li>
+      <li>Date, time, format and language sit right under the headline.</li>
+      <li>Student results come straight after the video. Highlighted text marks details to fill in.</li>
+      <li>The mentor is introduced by name with credentials.</li>
+      <li>Nine feature cards are merged into a six-point agenda.</li>
+      <li>Bonus values (₹20,000 total) stay, with each item labelled for what it is.</li>
+      <li>"No recording" appears once. One sticky Register bar replaces the repeated buttons.</li>
+      <li>Muted autoplay teaser with a "Tap for sound" control.</li>
+    </ol>
+  </details>
+
 </div>
 </main>
 
@@ -380,6 +400,7 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
     <p>Two hours, live in Tamil. Leave with a 90-day plan and the patterns that come up in real interviews.</p>
     <a class="btn" href="#register">Register for ₹199</a>
     <div class="legal">
+      <p><b>Demo:</b> This is a model page for team review. Names, figures and quotes marked Sample are placeholders.</p>
       <p><b>Meta disclaimer:</b> This site is not a part of the Facebook website or Meta Platforms, Inc. Additionally, this site is not endorsed by Facebook or Meta in any way. FACEBOOK and INSTAGRAM are trademarks of Meta Platforms, Inc.</p>
       <p><b>Results disclaimer:</b> Outcomes shared on this page are individual experiences and are not typical or guaranteed. Your results depend on your background, effort and consistent practice. This workshop does not guarantee a job, interview or salary.</p>
       <p><b>Trademarks:</b> Company names and logos are trademarks of their respective owners and are used only to describe the interview patterns covered. Vanakkam DSA is not affiliated with, sponsored or endorsed by these companies.</p>
@@ -405,6 +426,15 @@ details.q p{margin-top:8px;color:var(--muted);font-size:.94rem}
 })();
 </script>
 
+<script>
+(function(){
+  var bar=document.querySelector('.bar'), cta=document.getElementById('register');
+  if(!bar||!cta) return;
+  document.body.classList.add('bar-on');
+  if(!('IntersectionObserver' in window)){bar.classList.add('show');return;}
+  new IntersectionObserver(function(e){bar.classList.toggle('show',!e[0].isIntersecting);}).observe(cta);
+})();
+</script>
 <div class="bar"><div class="in">
   <div class="info"><b>₹199 · Live in Tamil</b>22 Nov, 5:00 PM IST</div>
   <a class="btn" href="#register">Register</a>
