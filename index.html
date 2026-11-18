@@ -246,6 +246,20 @@ body.bar-on{padding-bottom:88px}
 .bar .in{max-width:none}
 .bar .btn{padding:12px 22px;border-radius:12px}
 body.bar-on{padding-bottom:104px}
+
+/* bonus amounts highlighted */
+.bonus .amt{display:inline-block;font-family:var(--display);font-weight:700;font-size:.95rem;color:var(--on-champ);
+  background:linear-gradient(100deg,#f6dcb6,#e3c39d 50%,#cf9f80);border-radius:8px;padding:4px 10px;
+  box-shadow:0 0 0 1px rgb(255 228 190 / .5),0 0 14px rgb(227 195 157 / .35)}
+.bonus tbody tr:nth-child(odd) td{background:rgb(255 255 255 / .02)}
+.bonus th:last-child,.bonus td:last-child{width:1%}
+.bonus tfoot tr{background:linear-gradient(100deg,rgb(227 195 157 / .18),rgb(201 154 124 / .08))}
+.bonus tfoot td{background:none!important;padding-block:16px;vertical-align:middle}
+.bonus .tot{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.bonus .was{font-family:var(--mono);font-size:.8rem;color:var(--muted);font-weight:400}
+.bonus .was s{color:var(--ink);text-decoration-color:#f0a29a;text-decoration-thickness:2px;margin:0}
+.bonus .free{font-family:var(--display);font-weight:800;font-size:1rem;letter-spacing:.01em;color:#0f2a1c;background:linear-gradient(100deg,#a8ecc6,#6fd6a2);
+  border-radius:999px;padding:6px 14px;box-shadow:0 0 0 1px rgb(168 236 198 / .6),0 0 22px rgb(111 214 162 / .45);white-space:nowrap}
 </style>
 </head><body>
 
@@ -391,13 +405,13 @@ body.bar-on{padding-bottom:104px}
       <table>
         <thead><tr><th>Bonus</th><th>Value</th></tr></thead>
         <tbody>
-          <tr><td>25 DSA patterns cheat sheet<small>Notion template</small></td><td>₹5,000</td></tr>
-          <tr><td>Resume mastery session<small>Recorded guide</small></td><td>₹5,000</td></tr>
-          <tr><td>Resume review<small>Automated ATS check, instant report</small></td><td>₹5,000</td></tr>
-          <tr><td>LinkedIn review<small>Profile checklist and feedback</small></td><td>₹3,000</td></tr>
-          <tr><td>ATS-friendly resume template<small>Google Doc</small></td><td>₹2,000</td></tr>
+          <tr><td>25 DSA patterns cheat sheet<small>Notion template</small></td><td><span class="amt">₹5,000</span></td></tr>
+          <tr><td>Resume mastery session<small>Recorded guide</small></td><td><span class="amt">₹5,000</span></td></tr>
+          <tr><td>Resume review<small>Automated ATS check, instant report</small></td><td><span class="amt">₹5,000</span></td></tr>
+          <tr><td>LinkedIn review<small>Profile checklist and feedback</small></td><td><span class="amt">₹3,000</span></td></tr>
+          <tr><td>ATS-friendly resume template<small>Google Doc</small></td><td><span class="amt">₹2,000</span></td></tr>
         </tbody>
-        <tfoot><tr><td>Total value</td><td><s>₹20,000</s>Free with ₹199</td></tr></tfoot>
+        <tfoot><tr><td>Total value</td><td><div class="tot"><span class="was">Worth <s>₹20,000</s></span><span class="free">FREE with ₹199</span></div></td></tr></tfoot>
       </table>
     </div>
   </section>
