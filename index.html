@@ -334,7 +334,7 @@ window.WEBINAR = {
       <li data-w="dayDate">Sun, 22 Nov</li><li data-w="timeShort">5 PM IST</li><li data-w="duration">3 hrs live</li><li><span class="tw" lang="ta">தமிழ்</span></li>
     </ul>
     <div class="video">
-      <div class="poster" aria-hidden="true"><svg><use href="#cube"/></svg><span>Sample poster frame</span><b>25 patterns. Every product company interview.</b></div>
+      <div class="poster" aria-hidden="true"><svg><use href="#cube"/></svg><span>Live in தமிழ் · 3 hours</span><b>25 patterns. Every product company interview.</b></div>
       <video id="hero-video" autoplay muted loop playsinline preload="metadata"
              poster="hero-poster.jpg" width="1280" height="720" aria-label="Workshop intro from Hareesh">
         <source src="hero-teaser.mp4" type="video/mp4">
@@ -364,33 +364,34 @@ window.WEBINAR = {
       <div class="stat"><b class="gold">1000+</b><span>Trained in the program</span></div>
       <div class="stat"><b class="gold">15 LPA+</b><span>Top offers</span></div>
     </div>
-    <div class="carousel" id="stories" aria-roledescription="carousel" aria-label="Student stories">
+    <!-- Student stories carousel: hidden until real student names, outcomes, quotes and photos (with consent) are added. Remove the hidden attribute to show it. -->
+    <div class="carousel" id="stories" hidden aria-roledescription="carousel" aria-label="Student stories">
       <div class="track" tabindex="0">
         <figure class="slide">
-          <div class="shot" role="img" aria-label="Student photo placeholder"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="46" r="22"/><path d="M18 116c4-26 22-40 42-40s38 14 42 40z"/></svg><span>Student photo</span></div>
+          <div class="shot" role="img" aria-label="Student photo"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="46" r="22"/><path d="M18 116c4-26 22-40 42-40s38 14 42 40z"/></svg><span>Student photo</span></div>
           <figcaption>
-            <div class="who"><b>Arun Kumar</b><span class="sample">Sample</span><span class="meta">Cohort 5</span></div>
+            <div class="who"><b>Arun Kumar</b><span class="meta">Cohort 5</span></div>
             <div class="jump">Service company, 4.2 LPA → Zoho, 15 LPA</div>
             <q>I had solved 300 problems and still froze in interviews. Learning to spot the pattern first changed everything.</q>
           </figcaption>
         </figure><figure class="slide">
-          <div class="shot" role="img" aria-label="Student photo placeholder"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="46" r="22"/><path d="M18 116c4-26 22-40 42-40s38 14 42 40z"/></svg><span>Student photo</span></div>
+          <div class="shot" role="img" aria-label="Student photo"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="46" r="22"/><path d="M18 116c4-26 22-40 42-40s38 14 42 40z"/></svg><span>Student photo</span></div>
           <figcaption>
-            <div class="who"><b>Keerthana S</b><span class="sample">Sample</span><span class="meta">Final-year student</span></div>
+            <div class="who"><b>Keerthana S</b><span class="meta">Final-year student</span></div>
             <div class="jump">Campus → Freshworks, 12 LPA</div>
             <q>Having it explained in <span class="tw" lang="ta">தமிழ்</span> made the hard topics finally click. The 90-day plan kept me consistent.</q>
           </figcaption>
         </figure><figure class="slide">
-          <div class="shot" role="img" aria-label="Student photo placeholder"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="46" r="22"/><path d="M18 116c4-26 22-40 42-40s38 14 42 40z"/></svg><span>Student photo</span></div>
+          <div class="shot" role="img" aria-label="Student photo"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="46" r="22"/><path d="M18 116c4-26 22-40 42-40s38 14 42 40z"/></svg><span>Student photo</span></div>
           <figcaption>
-            <div class="who"><b>Surya Prakash</b><span class="sample">Sample</span><span class="meta">Working professional</span></div>
+            <div class="who"><b>Surya Prakash</b><span class="meta">Working professional</span></div>
             <div class="jump">Support engineer → Deloitte, SDE</div>
             <q>I prepared alongside a full-time job. One hour a day with the roadmap was enough.</q>
           </figcaption>
         </figure><figure class="slide">
-          <div class="shot" role="img" aria-label="Student photo placeholder"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="46" r="22"/><path d="M18 116c4-26 22-40 42-40s38 14 42 40z"/></svg><span>Student photo</span></div>
+          <div class="shot" role="img" aria-label="Student photo"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="46" r="22"/><path d="M18 116c4-26 22-40 42-40s38 14 42 40z"/></svg><span>Student photo</span></div>
           <figcaption>
-            <div class="who"><b>Divya R</b><span class="sample">Sample</span><span class="meta">Cohort 6</span></div>
+            <div class="who"><b>Divya R</b><span class="meta">Cohort 6</span></div>
             <div class="jump">Fresher → SDE 1, product company</div>
             <q>Mock rounds with real interview problems took away my fear. I walked into the final round calm.</q>
           </figcaption>
@@ -488,22 +489,6 @@ window.WEBINAR = {
     </div>
   </section>
 
-  <details class="review">
-    <summary><span>Model page for team review: changes from the live page</span></summary>
-    <ol>
-      <li>Theme built from the Hayan Tech logo: graphite with champagne-gold linework.</li>
-      <li>Date, time, format and language sit right under the headline.</li>
-      <li>Student results come straight after the video. Highlighted text marks details to fill in.</li>
-      <li>The mentor is introduced by name with credentials.</li>
-      <li>Nine feature cards are merged into a six-point agenda.</li>
-      <li>Bonus values (₹20,000 total) stay, with each item labelled for what it is.</li>
-      <li>One sticky Register bar replaces the repeated buttons.</li>
-      <li>Muted autoplay teaser with a "Tap for sound" control.</li>
-      <li><b>Video setup:</b> export a 10–15 s teaser (720p, H.264 MP4, about 1 Mbps, around 2 MB) as <code>hero-teaser.mp4</code> and a still frame (1280×720 JPG, under 40 KB) as <code>hero-poster.jpg</code>. Upload both next to the page. The video tag already uses <code>autoplay muted loop playsinline preload="metadata"</code>, so it plays silently on phones without going fullscreen. "Tap for sound" restarts it from 0:00 with sound and controls. Remove the sample poster frame once the real files are in.</li>
-      <li><b>Student photos:</b> replace each "Student photo" box with a 4:3 photo (800×600 WebP, under 60 KB), with the student's written consent.</li>
-    </ol>
-  </details>
-
 </div>
 </main>
 
@@ -514,7 +499,7 @@ window.WEBINAR = {
     <p>Three hours, live in <span class="tw" lang="ta">தமிழ்</span>. Leave knowing what to prepare, how to prepare, and what your next 90 days should look like.</p>
     <a class="btn" href="#register" data-register>Register for <span data-w="price">₹199</span></a>
     <div class="legal">
-      <p><b>Disclaimer:</b> This site is not a part of the Facebook website or Meta Platforms, Inc., and is not endorsed by Facebook or Meta in any way. FACEBOOK and INSTAGRAM are trademarks of Meta Platforms, Inc. Company names and logos shown are trademarks of their respective owners, used only to describe the interview patterns covered; Vanakkam DSA is not affiliated with or endorsed by them. Student outcomes are individual experiences and are not typical or guaranteed; results depend on your effort and practice, and this workshop does not guarantee a job, interview or salary. Names, figures and quotes marked Sample are placeholders on this demo page.</p>
+      <p><b>Disclaimer:</b> This site is not a part of the Facebook website or Meta Platforms, Inc., and is not endorsed by Facebook or Meta in any way. FACEBOOK and INSTAGRAM are trademarks of Meta Platforms, Inc. Company names and logos shown are trademarks of their respective owners, used only to describe the interview patterns covered; Vanakkam DSA is not affiliated with or endorsed by them. Student outcomes are individual experiences and are not typical or guaranteed; results depend on your effort and practice, and this workshop does not guarantee a job, interview or salary.</p>
       <nav aria-label="Legal"><a href="#privacy">Privacy Policy</a><a href="#terms">Terms &amp; Conditions</a><a href="#refund">Refund Policy</a><a href="#contact">Contact</a></nav>
     </div>
     <p class="copy">© 2026 Hayan Tech. All rights reserved.</p>

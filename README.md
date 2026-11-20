@@ -68,11 +68,10 @@ Test: change `date` to `2026-12-06`, `time` to `18:30`, `price` to `299`. The pa
 
 ## 4. Replace before launch
 
-- [ ] Student stories: real names, outcomes, quotes and photos (16:10 WebP, under 60 KB) with written consent; remove all "Sample" tags.
-- [ ] Stats (cohorts, students trained) and mentor credentials: real numbers; remove "Sample" tags.
+- [ ] Student stories carousel is built but hidden (`hidden` on `#stories`). Add real names, outcomes, quotes and photos (16:10 WebP, under 60 KB) with written consent, then remove `hidden`.
+- [ ] Confirm the 15 LPA+ figure in the stats row.
 - [ ] "Where our students work now" logos: only companies with verified placements.
 - [ ] Footer links: Privacy Policy, Terms, Refund Policy, Contact → real pages (Meta checks these).
-- [ ] Remove the last "Sample" sentence from the disclaimer and the team-review notes block at the bottom.
 - [ ] Add Meta Pixel + Conversions API; fire `Lead`/`InitiateCheckout` on Register click, and `Purchase` from TagMango.
 - [ ] Remove `<meta name="robots" content="noindex">` only if the page should be indexed.
 - [ ] Mentor photo is embedded as base64. Swap it for a normal image file on your server if you prefer.
